@@ -1,4 +1,4 @@
-from utils import division
+from my_funcs.utils import division
 import pytest
 
 
@@ -9,5 +9,13 @@ import pytest
 def test_division_good(a, b, expected_result):
     assert division(a, b) == expected_result
 
+
+
+
+@pytest.mark.parametrize('expected_exception, divider, divisionable', [(ZeroDivisionError, 0, 10),
+                                                                   (TypeError, '2', 20)])
+def test_zero_division(expected_exception, divider, divisionable):
+    with pytest.raises(expected_exception):
+        division(divisionable, divider)
 
 
